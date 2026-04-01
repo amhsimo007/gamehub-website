@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Your Ultimate Gaming Destination</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>GameHub</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#games" class="nav-link">Games</a></li>
+                    <li><a href="#favorites" class="nav-link">Favorites</a></li>
+                    <li><a href="#profile" class="nav-link">Profile</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button id="loginBtn" class="btn btn-outline">Login</button>
+                    <button id="registerBtn" class="btn btn-primary">Register</button>
+                    <div id="userMenu" class="user-menu" style="display: none;">
+                        <img id="userAvatar" src="images/default-avatar.png" alt="User Avatar" class="user-avatar">
+                        <span id="userName"></span>
+                        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                    </div>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 data-translate="hero.title">Welcome to GameHub</h1>
+                <p data-translate="hero.subtitle">Discover, play, and share your favorite games with gamers worldwide</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" data-translate="hero.explore">Explore Games</button>
+                    <button class="btn btn-secondary btn-large" data-translate="hero.join">Join Community</button>
+                </div>
+            </div>
+            <div class="hero-background">
+                <video autoplay muted loop id="heroVideo">
+                    <source src="media/hero-background.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- Featured Games Section -->
+        <section id="featured" class="featured-games">
+            <div class="container">
+                <h2 data-translate="featured.title">Featured Games</h2>
+                <div class="games-grid" id="featuredGamesGrid">
+                    <!-- Games will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Catalog Section -->
+        <section id="games" class="games-catalog">
+            <div class="container">
+                <h2 data-translate="catalog.title">Game Catalog</h2>
+                
+                <!-- Search and Filter Bar -->
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search games..." data-translate-placeholder="catalog.search">
+                    </div>
+                    <div class="filter-options">
+                        <select id="genreFilter" class="filter-select">
+                            <option value="" data-translate="filter.all">All Genres</option>
+                            <option value="action" data-translate="genre.action">Action</option>
+                            <option value="adventure" data-translate="genre.adventure">Adventure</option>
+                            <option value="rpg" data-translate="genre.rpg">RPG</option>
+                            <option value="strategy" data-translate="genre.strategy">Strategy</option>
+                            <option value="sports" data-translate="genre.sports">Sports</option>
+                            <option value="puzzle" data-translate="genre.puzzle">Puzzle</option>
+                        </select>
+                        <select id="platformFilter" class="filter-select">
+                            <option value="" data-translate="filter.all">All Platforms</option>
+                            <option value="pc">PC</option>
+                            <option value="playstation">PlayStation</option>
+                            <option value="xbox">Xbox</option>
+                            <option value="nintendo">Nintendo</option>
+                            <option value="mobile">Mobile</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Games Grid -->
+                <div class="games-grid" id="gamesGrid">
+                    <!-- Games will be dynamically loaded here -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="load-more-container">
+                    <button id="loadMoreBtn" class="btn btn-primary" data-translate="catalog.loadMore">Load More Games</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section id="favorites" class="favorites-section">
+            <div class="container">
+                <h2 data-translate="favorites.title">My Favorite Games</h2>
+                <div id="favoritesGrid" class="games-grid">
+                    <!-- Favorite games will be displayed here -->
+                </div>
+                <div id="noFavoritesMessage" class="empty-state" style="display: none;">
+                    <i class="fas fa-heart"></i>
+                    <p data-translate="favorites.empty">No favorite games yet. Start adding some!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="profile-section">
+            <div class="container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <img id="profileAvatar" src="images/default-avatar.png" alt="Profile Avatar" class="profile-avatar">
+                        <div class="profile-info">
+                            <h2 id="profileName"></h2>
+                            <p id="profileEmail"></p>
+                            <p id="profileCountry"></p>
+                        </div>
+                        <button id="editProfileBtn" class="btn btn-secondary" data-translate="profile.edit">Edit Profile</button>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalGamesPlayed">0</span>
+                            <span data-translate="profile.gamesPlayed">Games Played</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalFavorites">0</span>
+                            <span data-translate="profile.favorites">Favorites</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalHours">0</span>
+                            <span data-translate="profile.hours">Hours Played</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-translate="footer.about">About GameHub</h3>
+                    <p data-translate="footer.description">Your ultimate destination for discovering and managing your favorite video games.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-translate="footer.links">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" data-translate="footer.home">Home</a></li>
+                        <li><a href="#games" data-translate="footer.games">Games</a></li>
+                        <li><a href="#favorites" data-translate="footer.favorites">Favorites</a></li>
+                        <li><a href="#profile" data-translate="footer.profile">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-translate="footer.contact">Contact</h3>
+                    <p>Email: info@gamehub.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GameHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 data-translate="login.title">Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" data-translate="login.email">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" data-translate="login.password">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" data-translate="login.submit">Login</button>
+            </form>
+            <p class="switch-auth">
+                <span data-translate="login.noAccount">Don't have an account?</span>
+                <a href="#" id="switchToRegister" data-translate="login.register">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 data-translate="register.title">Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName" data-translate="register.name">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail" data-translate="register.email">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword" data-translate="register.password">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerCountry" data-translate="register.country">Country</label>
+                    <select id="registerCountry" required>
+                        <option value="" data-translate="register.selectCountry">Select your country</option>
+                        <!-- Countries will be populated by JavaScript -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" data-translate="register.submit">Register</button>
+            </form>
+            <p class="switch-auth">
+                <span data-translate="register.hasAccount">Already have an account?</span>
+                <a href="#" id="switchToLogin" data-translate="register.login">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Game Details Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content game-modal">
+            <span class="close">&times;</span>
+            <div id="gameDetails">
+                <!-- Game details will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/translations.js"></script>
+</body>
+</html>

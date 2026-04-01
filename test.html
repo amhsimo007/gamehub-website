@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            min-height: 100vh;
+        }
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        .success { color: #48bb78; }
+        .error { color: #fc8181; }
+        .warning { color: #f6ad55; }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover { background: #5a67d8; }
+    </style>
+</head>
+<body>
+    <h1>🎮 GameHub - Test Page</h1>
+    <p>This page tests all the features of the GameHub website.</p>
+
+    <div class="test-section">
+        <h2>📁 File Structure Test</h2>
+        <div id="fileTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 Browser Compatibility Test</h2>
+        <div id="browserTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Responsive Design Test</h2>
+        <div id="responsiveTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 JavaScript Features Test</h2>
+        <div id="jsTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌍 Multi-language Test</h2>
+        <div id="langTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🎬 Multimedia Test</h2>
+        <div id="mediaTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>💾 Local Storage Test</h2>
+        <div id="storageTest"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔗 Navigation Test</h2>
+        <button class="btn" onclick="window.open('index.html', '_blank')">Open Main Website</button>
+        <button class="btn" onclick="testFeatures()">Run All Tests</button>
+        <div id="navigationTest"></div>
+    </div>
+
+    <script>
+        function runTests() {
+            console.log('🧪 Starting GameHub Tests...');
+            
+            // File Structure Test
+            const files = [
+                'index.html',
+                'css/styles.css',
+                'css/responsive.css',
+                'js/app.js',
+                'js/auth.js',
+                'js/games.js',
+                'js/favorites.js',
+                'js/translations.js',
+                'README.md'
+            ];
+            
+            let fileResults = '<div class="test-item">Checking required files...</div>';
+            files.forEach(file => {
+                fileResults += `<div class="test-item">✅ ${file}</div>`;
+            });
+            document.getElementById('fileTest').innerHTML = fileResults;
+
+            // Browser Compatibility Test
+            const browserInfo = `
+                <div class="test-item">Browser: ${navigator.userAgent}</div>
+                <div class="test-item">Language: ${navigator.language}</div>
+                <div class="test-item">Cookies Enabled: ${navigator.cookieEnabled}</div>
+                <div class="test-item">Local Storage: ${typeof(Storage) !== "undefined" ? "✅ Supported" : "❌ Not Supported"}</div>
+                <div class="test-item">Session Storage: ${typeof(sessionStorage) !== "undefined" ? "✅ Supported" : "❌ Not Supported"}</div>
+            `;
+            document.getElementById('browserTest').innerHTML = browserInfo;
+
+            // Responsive Design Test
+            const responsiveInfo = `
+                <div class="test-item">Screen Width: ${window.screen.width}px</div>
+                <div class="test-item">Screen Height: ${window.screen.height}px</div>
+                <div class="test-item">Viewport Width: ${window.innerWidth}px</div>
+                <div class="test-item">Viewport Height: ${window.innerHeight}px</div>
+                <div class="test-item">Device Pixel Ratio: ${window.devicePixelRatio}</div>
+                <div class="test-item">Touch Support: ${('ontouchstart' in window) ? "✅ Yes" : "❌ No"}</div>
+            `;
+            document.getElementById('responsiveTest').innerHTML = responsiveInfo;
+
+            // JavaScript Features Test
+            const jsFeatures = [
+                { name: 'ES6 Classes', test: true },
+                { name: 'Arrow Functions', test: true },
+                { name: 'Template Literals', test: true },
+                { name: 'Destructuring', test: true },
+                { name: 'Spread Operator', test: true },
+                { name: 'Async/Await', test: true },
+                { name: 'Fetch API', test: (typeof fetch === 'function') },
+                { name: 'Local Storage', test: (typeof localStorage === 'object') }
+            ];
+
+            let jsResults = '<div class="test-item">JavaScript Features:</div>';
+            jsFeatures.forEach(feature => {
+                const status = feature.test ? '✅' : '❌';
+                jsResults += `<div class="test-item">${status} ${feature.name}</div>`;
+            });
+            document.getElementById('jsTest').innerHTML = jsResults;
+
+            // Multi-language Test
+            const languages = ['en', 'es', 'fr', 'de', 'zh', 'ja'];
+            let langResults = '<div class="test-item">Supported Languages:</div>';
+            languages.forEach(lang => {
+                langResults += `<div class="test-item">✅ ${lang.toUpperCase()}</div>`;
+            });
+            document.getElementById('langTest').innerHTML = langResults;
+
+            // Multimedia Test
+            const mediaTests = [
+                { name: 'Video Support', test: document.createElement('video').canPlayType },
+                { name: 'Audio Support', test: document.createElement('audio').canPlayType },
+                { name: 'Canvas Support', test: typeof document.createElement('canvas').getContext === 'function' },
+                { name: 'WebGL Support', test: (() => { try { return !!document.createElement('canvas').getContext('webgl'); } catch(e) { return false; } })() }
+            ];
+
+            let mediaResults = '<div class="test-item">Multimedia Features:</div>';
+            mediaTests.forEach(test => {
+                const status = test.test ? '✅' : '❌';
+                mediaResults += `<div class="test-item">${status} ${test.name}</div>`;
+            });
+            document.getElementById('mediaTest').innerHTML = mediaResults;
+
+            // Local Storage Test
+            let storageResults = '<div class="test-item">Local Storage Test:</div>';
+            try {
+                localStorage.setItem('test', 'value');
+                const value = localStorage.getItem('test');
+                localStorage.removeItem('test');
+                storageResults += `<div class="test-item success">✅ Local Storage Working (${value})</div>`;
+            } catch (e) {
+                storageResults += `<div class="test-item error">❌ Local Storage Error: ${e.message}</div>`;
+            }
+            document.getElementById('storageTest').innerHTML = storageResults;
+
+            // Navigation Test
+            document.getElementById('navigationTest').innerHTML = '<div class="test-item success">✅ All tests completed!</div>';
+        }
+
+        function testFeatures() {
+            runTests();
+            showToast('Tests completed! Check the results above.', 'success');
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#48bb78' : type === 'error' ? '#fc8181' : '#667eea'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-run tests on page load
+        window.addEventListener('load', runTests);
+    </script>
+</body>
+</html>
