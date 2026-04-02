@@ -281,6 +281,151 @@ body {
     justify-content: center;
 }
 
+.wifi-monitor {
+    width: min(100%, 680px);
+    margin: 2rem auto 0;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: rgba(9, 14, 28, 0.7);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-xl);
+    text-align: left;
+}
+
+.wifi-monitor__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.wifi-monitor__eyebrow {
+    margin-bottom: 0.35rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.wifi-monitor__header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.wifi-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 0.6rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+}
+
+.wifi-status-badge--checking {
+    background: rgba(246, 173, 85, 0.24);
+    border: 1px solid rgba(246, 173, 85, 0.55);
+}
+
+.wifi-status-badge--online {
+    background: rgba(72, 187, 120, 0.24);
+    border: 1px solid rgba(72, 187, 120, 0.55);
+}
+
+.wifi-status-badge--limited {
+    background: rgba(246, 173, 85, 0.24);
+    border: 1px solid rgba(246, 173, 85, 0.55);
+}
+
+.wifi-status-badge--offline {
+    background: rgba(252, 129, 129, 0.24);
+    border: 1px solid rgba(252, 129, 129, 0.55);
+}
+
+.wifi-monitor__signal {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    height: 52px;
+    margin: 1.5rem 0 1.25rem;
+}
+
+.wifi-bar {
+    width: 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    transition: var(--transition);
+}
+
+.wifi-bar:nth-child(1) {
+    height: 20%;
+}
+
+.wifi-bar:nth-child(2) {
+    height: 40%;
+}
+
+.wifi-bar:nth-child(3) {
+    height: 65%;
+}
+
+.wifi-bar:nth-child(4) {
+    height: 100%;
+}
+
+.wifi-monitor[data-strength="1"] .wifi-bar:nth-child(1),
+.wifi-monitor[data-strength="2"] .wifi-bar:nth-child(-n+2),
+.wifi-monitor[data-strength="3"] .wifi-bar:nth-child(-n+3),
+.wifi-monitor[data-strength="4"] .wifi-bar {
+    background: var(--success-color);
+    box-shadow: 0 0 10px rgba(72, 187, 120, 0.35);
+}
+
+.wifi-monitor[data-connection="offline"] .wifi-bar {
+    background: rgba(252, 129, 129, 0.45);
+    box-shadow: none;
+}
+
+.wifi-monitor__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.wifi-monitor__item {
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wifi-monitor__label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.88rem;
+}
+
+.wifi-monitor__item strong {
+    font-size: 1rem;
+    color: white;
+}
+
+.wifi-monitor__note,
+.wifi-monitor__updated {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.95rem;
+}
+
+.wifi-monitor__updated {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.62);
+}
+
 /* Games Grid */
 .games-grid {
     display: grid;

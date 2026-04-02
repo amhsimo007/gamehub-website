@@ -62,6 +62,41 @@
                     <button class="btn btn-primary btn-large" data-translate="hero.explore">Explore Games</button>
                     <button class="btn btn-secondary btn-large" data-translate="hero.join">Join Community</button>
                 </div>
+                <section class="wifi-monitor" aria-live="polite">
+                    <div class="wifi-monitor__header">
+                        <div>
+                            <p class="wifi-monitor__eyebrow">Network Monitor</p>
+                            <h2>Wi-Fi Status</h2>
+                        </div>
+                        <span id="wifiStatusBadge" class="wifi-status-badge wifi-status-badge--checking">Checking...</span>
+                    </div>
+                    <div class="wifi-monitor__signal" aria-hidden="true">
+                        <span class="wifi-bar"></span>
+                        <span class="wifi-bar"></span>
+                        <span class="wifi-bar"></span>
+                        <span class="wifi-bar"></span>
+                    </div>
+                    <div class="wifi-monitor__grid">
+                        <div class="wifi-monitor__item">
+                            <span class="wifi-monitor__label">Connection</span>
+                            <strong id="wifiConnectionState">Detecting...</strong>
+                        </div>
+                        <div class="wifi-monitor__item">
+                            <span class="wifi-monitor__label">Type</span>
+                            <strong id="wifiConnectionType">Unknown</strong>
+                        </div>
+                        <div class="wifi-monitor__item">
+                            <span class="wifi-monitor__label">Speed</span>
+                            <strong id="wifiDownlink">--</strong>
+                        </div>
+                        <div class="wifi-monitor__item">
+                            <span class="wifi-monitor__label">Latency</span>
+                            <strong id="wifiLatency">--</strong>
+                        </div>
+                    </div>
+                    <p id="wifiMonitorNote" class="wifi-monitor__note">Waiting for browser network data...</p>
+                    <p class="wifi-monitor__updated">Last update: <span id="wifiLastUpdated">--:--:--</span></p>
+                </section>
             </div>
             <div class="hero-background">
                 <video autoplay muted loop id="heroVideo">
@@ -278,5 +313,6 @@
     <script src="js/games.js"></script>
     <script src="js/favorites.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/wifi-monitor.js"></script>
 </body>
 </html>
